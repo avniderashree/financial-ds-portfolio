@@ -1,6 +1,6 @@
 # Quantitative Risk & Financial Data Science Portfolio
 
-**Owner:** [Your Name]
+**Owner:** Avni Derashree
 **Objective:** Applied Machine Learning for Credit Risk, Liquidity Forecasting, and Collateral Optimization.
 
 ## Project Roadmap
