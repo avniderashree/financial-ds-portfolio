@@ -1,0 +1,15 @@
+
+# Ignore Data Files (Too large for GitHub)
+data/
+*.csv
+*.xlsx
+
+# Ignore Python Cache
+__pycache__/
+*.pyc
+
+# Ignore Environment Variables (API Keys)
+.env
+.DS_Store
+.ipynb_checkpoints/
+
