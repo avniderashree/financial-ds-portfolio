@@ -3,6 +3,7 @@
 import yfinance as yf
 import pandas as pd
 import os
+import time
 
 def fetch_market_data(tickers, start_date, end_date, output_folder='data/raw'):
     """
@@ -29,6 +30,7 @@ def fetch_market_data(tickers, start_date, end_date, output_folder='data/raw'):
         # 2. Download data using yfinance
         # group_by='ticker' allows us to handle multiple stocks easily
         raw_data = yf.download(tickers, start=start_date, end=end_date, group_by='ticker')
+        time.sleep(20)
         
         # 3. Check if data is empty (Best Practice: Validation)
         if raw_data.empty:
@@ -51,5 +53,5 @@ def fetch_market_data(tickers, start_date, end_date, output_folder='data/raw'):
 if __name__ == "__main__":
     # We are pulling the S&P 500 (SPY) and Volatility Index (VIX)
     # These are crucial for your future Liquidity Model.
-    my_tickers = ['SPY', 'VIX'] 
+    my_tickers = ['SPY', '^VIX'] 
     fetch_market_data(my_tickers, '2020-01-01', '2024-01-01')

@@ -4,16 +4,19 @@ import pandas as pd
 import sys
 
 def predict_risk(current_data):
-    """
-    Loads the saved model and predicts risk for new data.
-    current_data: Dict or DataFrame containing the 5 features.
-    """
     # 1. Load Model
     model = xgb.XGBClassifier()
+    
+    # --- ADD THIS LINE TO FIX THE ERROR ---
+    model._estimator_type = "classifier" 
+    # --------------------------------------
+
     model.load_model('models/xgb_risk_model.json')
     
-    # 2. Convert input to DataFrame
-    df = pd.DataFrame([current_data])
+    # 2. Convert input to DataFrame (Ensure feature order matches training!)
+    # It is safer to explicitly order your columns here
+    feature_order = ['SPY_Log_Ret', 'SPY_Vol_30d', 'RSI', 'BB_Width', 'Trend_Signal']
+    df = pd.DataFrame([current_data])[feature_order]
     
     # 3. Predict
     prob = model.predict_proba(df)[:, 1][0]

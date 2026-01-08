@@ -86,4 +86,4 @@ def run_quant_queries():
     print(result_3)
 
 if __name__ == "__main__":
-    run_quant_queries()
+    run_quant_queries() 
